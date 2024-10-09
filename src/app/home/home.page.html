@@ -1,8 +1,6 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
+  <ion-toolbar color="dark">
+    <ion-title class="ion-text-center"> Wordle</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -13,8 +11,71 @@
     </ion-toolbar>
   </ion-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <ion-grid>
+    <ion-row class="ion-justify-content-center">
+      <ion-button color="medium" (click)="showRules()">Rules</ion-button>
+    </ion-row>
+  </ion-grid>
+  <ion-grid class="wordleGrid">
+    @for (row of guessMatrix; track $index; let rowIndex = $index) {
+    <ion-row id="_{{rowIndex}}">
+      @for (column of row; track $index) {
+      <ion-col
+        id="_{{rowIndex}}{{$index}}"
+        class="gridBox animate__animated"
+        [class]="gridColor[matrixState[rowIndex][$index]]"
+        >{{guessMatrix[rowIndex][$index]}}</ion-col
+      >
+      }
+    </ion-row>
+    }
+  </ion-grid>
+  <ion-grid class="ion-margin-top">
+    <ion-row class="keyboardRow ion-justify-content-end"> </ion-row>
+
+    <ion-row class="keyboardRow ion-justify-content-center">
+      <ion-button (click)="keyPress('Q')" [color]="keyColor['Q']">Q</ion-button>
+      <ion-button (click)="keyPress('W')" [color]="keyColor['W']">W</ion-button>
+      <ion-button (click)="keyPress('E')" [color]="keyColor['E']">E</ion-button>
+      <ion-button (click)="keyPress('R')" [color]="keyColor['R']">R</ion-button>
+      <ion-button (click)="keyPress('T')" [color]="keyColor['T']">T</ion-button>
+      <ion-button (click)="keyPress('Y')" [color]="keyColor['Y']">Y</ion-button>
+      <ion-button (click)="keyPress('U')" [color]="keyColor['U']">U</ion-button>
+      <ion-button (click)="keyPress('I')" [color]="keyColor['I']">I</ion-button>
+      <ion-button (click)="keyPress('O')" [color]="keyColor['O']">O</ion-button>
+      <ion-button (click)="keyPress('P')" [color]="keyColor['P']">P</ion-button>
+    </ion-row>
+    <ion-row class="keyboardRow ion-justify-content-center">
+      <ion-button (click)="keyPress('A')" [color]="keyColor['A']">A</ion-button>
+      <ion-button (click)="keyPress('S')" [color]="keyColor['S']">S</ion-button>
+      <ion-button (click)="keyPress('D')" [color]="keyColor['D']">D</ion-button>
+      <ion-button (click)="keyPress('F')" [color]="keyColor['F']">F</ion-button>
+      <ion-button (click)="keyPress('G')" [color]="keyColor['G']">G</ion-button>
+      <ion-button (click)="keyPress('H')" [color]="keyColor['H']">H</ion-button>
+      <ion-button (click)="keyPress('J')" [color]="keyColor['J']">J</ion-button>
+      <ion-button (click)="keyPress('K')" [color]="keyColor['K']">K</ion-button>
+      <ion-button (click)="keyPress('L')" [color]="keyColor['L']">L</ion-button>
+    </ion-row>
+    <ion-row class="keyboardRow ion-justify-content-center">
+      <ion-button (click)="keyPress('Z')" [color]="keyColor['Z']">Z</ion-button>
+      <ion-button (click)="keyPress('X')" [color]="keyColor['X']">X</ion-button>
+      <ion-button (click)="keyPress('C')" [color]="keyColor['C']">C</ion-button>
+      <ion-button (click)="keyPress('V')" [color]="keyColor['V']">V</ion-button>
+      <ion-button (click)="keyPress('B')" [color]="keyColor['B']">B</ion-button>
+      <ion-button (click)="keyPress('N')" [color]="keyColor['N']">N</ion-button>
+      <ion-button (click)="keyPress('M')" [color]="keyColor['M']">M</ion-button>
+      <ion-button (click)="backKey()" color="danger">⌫</ion-button>
+    </ion-row>
+    <ion-row class="ion-justify-content-center">
+      <ion-button (click)="enterKey()" color="success" class="ion-text-center"
+        >ENTER</ion-button
+      >
+    </ion-row>
+  </ion-grid>
 </ion-content>
+
+<ion-footer [translucent]="true">
+  <ion-toolbar color="dark">
+    <ion-title class="ion-text-center"> Wordle</ion-title>
+  </ion-toolbar>
+</ion-footer>

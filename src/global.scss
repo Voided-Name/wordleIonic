@@ -35,3 +35,8 @@
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
 @import "@ionic/angular/css/palettes/dark.system.css";
+
+.swal-theme {
+  background-color: var(--ion-color-light) !important;
+  color: var(--ion-color-dark) !important;
+}

@@ -25,3 +25,50 @@
 #container a {
   text-decoration: none;
 }
+
+.gridBox {
+  border: solid 1px var(--ion-color-dark);
+  aspect-ratio: 1 / 1;
+  font-size: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation-duration: 0.25s;
+}
+
+.wordleGrid {
+  max-width: 400px;
+}
+
+.keyboardRow ion-button {
+  width: 30px;
+  overflow: hidden;
+}
+
+.hasKey {
+  background-color: var(--ion-color-light-shade);
+}
+
+.properPosition {
+  background-color: var(--ion-color-success);
+}
+
+.letterExists {
+  background-color: var(--ion-color-warning);
+}
+
+.invalid {
+  background-color: var(--ion-color-dark-tint);
+  color: var(--ion-color-light);
+}
+
+.focusRow {
+  background-color: red;
+}
+
+ion-content {
+  --background: linear-gradient(
+    var(--ion-color-light-tint),
+    var(--ion-color-light-shade)
+  );
+}
